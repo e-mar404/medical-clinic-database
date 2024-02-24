@@ -1,0 +1,11 @@
+[ ] COMPANY
+
+[ ] CLINIC
+
+[ ] EMPLOYEE
+
+[ ] APPOINTMENTS
+
+[ ] MEDICATIONS
+
+etc ...
