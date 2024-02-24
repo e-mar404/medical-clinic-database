@@ -1,9 +1,9 @@
 Entities/tables needing to be done in main.sql
 
 [ ] Company
-    Company name
-    Location: Address (Street, City, State, Zip Code)
-    Phone number
+    - Company name
+    - Location: Address (Street, City, State, Zip Code)
+    - Phone number
 
 [ ] Clinic
     Clinic ID: unique identifier
