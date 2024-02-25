@@ -20,11 +20,12 @@ CREATE TABLE Clinic (
 
 CREATE TABLE Patient (
     patient_id SERIAL PRIMARY KEY,
-    full_name VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50),
+    middle_name VARCHAR(50),
+    last_name VARCHAR(50),
     date_of_birth DATE,
     gender CHAR(1),
     weight DECIMAL(5,2),
-    identification VARCHAR(50),
     home_address VARCHAR(255),
     phone_number VARCHAR(20),
     email VARCHAR(255),
@@ -33,6 +34,11 @@ CREATE TABLE Patient (
     emergency_contact_name VARCHAR(255),
     emergency_contact_phone VARCHAR(20),
     emergency_contact_relationship VARCHAR(50),
+);
+
+CREATE TABLE MedicalHistory (
+    history_id SERIAL PRIMARY KEY,
+    patient_id INT REFERENCES Patient(patient_id),
     current_medications TEXT,
     allergies TEXT,
     past_surgeries TEXT,
@@ -41,6 +47,7 @@ CREATE TABLE Patient (
     preferred_pharmacy VARCHAR(255),
     billing_info TEXT
 );
+
 
 CREATE TABLE Employee (
     employee_id SERIAL PRIMARY KEY,
