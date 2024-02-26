@@ -16,12 +16,6 @@ Entities/tables needing to be done in main.sql
     - Contact Information: Home address, phone number(s), email address
     - Insurance Information: Health insurance details (policy number, group number)
     - Emergency Contact Information
-    - Medical History: Current medications, dosage, allergies, past surgeries/medical
-procedures, chronic conditions/illnesses
-    - Consent Forms: Signed forms for the clinic to provide care and share information
-with other healthcare providers if necessary
-    - Prefered Pharmacy: pharmacy where prescriptions will go to
-    - Financial Information: Billing/payment information, co-payment or deductible
 
 - [ ] Employee:
     - Employee ID: unique identifier
@@ -38,6 +32,28 @@ with other healthcare providers if necessary
     - Doctor: main doctor scheduled for appointment
     - Confirmation: notification will be sent to patient to check in for appointment
     - Status: an appointment can either be scheduled, past, in progress or canceled
+
+- [ ] Medical History:
+    - Patient ID: foreign key
+    - Current Medications
+    - Dosage
+    - Allergies
+    - Past surgeries/medical procedures
+    - Chronic conditions/illnesses
+
+- [ ] Consent Forms:
+    - Patient ID
+    - Employee ID (PCP)
+    - Clinic ID
+    - Status 
+
+- [ ] Preferred Pharmacy:
+    - Pharmacy ID: unique identifier
+    - Location: Address(Street, City, State, Zipcode)
+    - Phone number
+
+- [ ] Financial Information:
+    - Billing/payment information, co-payment or deductible
 
 - [ ] Medications
     - Name
