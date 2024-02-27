@@ -1,60 +1,91 @@
+- [ ] is not implemented in `main.sql`
+- [x] has been implemented in `main.sql`
+
 Entities/tables needing to be done in main.sql
 
 - [ ] Company
-    - Company name
-    - Location: Address (Street, City, State, Zip Code)
+    - Name
+    - Location: references the address table
     - Phone number
 
 - [ ] Clinic
     - Clinic ID: unique identifier
-    - Location: Address (Street, City, State, Zip Code)
+    - Location: references the address table
     - Phone number
 
 - [ ] Patient
     - Patient ID: unique identifier
-    - Personal Information: Full name, date of birth, gender, weight, identification
-    - Contact Information: Home address, phone number(s), email address
-    - Insurance Information: Health insurance details (policy number, group number)
+    - First Name
+    - Middle Name: optional
+    - Last Name
+    - Gender
+    - Weight
+    - Address: references address table
+    - Phone Number
+    - Email Address
+    - Insurance Information: references insurance information table
+    - Financial Information: references financial information table
     - Emergency Contact Information
+    - Prefered Pharmacy: foreign key
 
 - [ ] Employee:
     - Employee ID: unique identifier
-    - Role: Admin | Doctor | Nurse | Receptionist
-    - Personal Information: Full name, date of birth, gender, SSN
-    - Contact Information: Home address, phone number, email address
-    - Emergency Contact Information
-    - Patients: list of patient uids, if row has role of doctor
+    - Role: Enum of(Admin | Doctor | Nurse | Receptionist)
+    - First Name
+    - Middle Name
+    - Last Name
+    - Email
+    - Patients: list of patient uids, if row has role of doctor // need to look at how to make a relation to multiple tables
 
-- [ ] Appointments
-    - Date: mm/dd/yyyy 24hr
-    - Patient: will contain which patient is scheduled for that appointment
-    - Clinic: the specific clinic location that the appointment is set up at
-    - Doctor: main doctor scheduled for appointment
+- [ ] Appointments:
+    - Date
+    - Patient ID
+    - Clinics ID
+    - Doctor ID
     - Confirmation: notification will be sent to patient to check in for appointment
-    - Status: an appointment can either be scheduled, past, in progress or canceled
+    - Status: enum of (scheduled, past, in progress, canceled)
 
 - [ ] Medical History:
-    - Patient ID: foreign key
-    - Current Medications
-    - Dosage
-    - Allergies
+    - Current Medications:
+    - Allergies:
     - Past surgeries/medical procedures
     - Chronic conditions/illnesses
+    - Patient ID
+
+- [ ] Insurance Information:
+    - Insurance Number
+    - Group Number
+    - Insurance Name
+    - Patient ID
 
 - [ ] Consent Forms:
     - Patient ID
     - Employee ID (PCP)
     - Clinic ID
-    - Status 
+    - Status
 
 - [ ] Preferred Pharmacy:
     - Pharmacy ID: unique identifier
-    - Location: Address(Street, City, State, Zipcode)
+    - Name
+    - Address: refernces address table
     - Phone number
 
 - [ ] Financial Information:
-    - Billing/payment information, co-payment or deductible
+    - Patient ID
+    - Card Number: primary key
+    - CVV
+    - Expiration Date
+    - Zip Code
+    - Name on Card
 
-- [ ] Medications
+- [ ] Medications // doctor prescribes medications to patients, this will maybe be a separate relational table
     - Name
     - Contraindications
+
+- [ ] Address
+    - Street Line 1
+    - Street Line 2: optional
+    - City
+    - State
+    - Zip Code
+    - Super Key (all above)

@@ -1,3 +1,6 @@
+CREATE DATABASE Medical_Clinic(
+);
+
 CREATE TABLE Company (
     company_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -38,7 +41,6 @@ CREATE TABLE Patient (
 
 CREATE TABLE MedicalHistory (
     history_id SERIAL PRIMARY KEY,
-    patient_id INT REFERENCES Patient(patient_id),
     current_medications TEXT,
     allergies TEXT,
     past_surgeries TEXT,
@@ -68,9 +70,6 @@ CREATE TABLE Employee (
 CREATE TABLE Appointments (
     appointment_id SERIAL PRIMARY KEY,
     appointment_date TIMESTAMP,
-    patient_id INT REFERENCES Patient(patient_id),
-    clinic_id INT REFERENCES Clinic(clinic_id),
-    doctor_id INT REFERENCES Employee(employee_id),
     confirmation BOOLEAN,
     status VARCHAR(20)
 );
