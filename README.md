@@ -28,14 +28,22 @@
     - Emergency Contact Information
     - Prefered Pharmacy: foreign key
 
-- [ ] Employee:
+- [ ] Medical Employee:
     - Employee ID: unique identifier
-    - Role: Enum of [Role](#roles)
+    - Role Enum of [Medical Roles](#medical-roles)
     - First Name
     - Middle Name
     - Last Name
     - Email
-    - Patients: list of patient uids, if row has role of doctor // need to look at how to make a relation to multiple tables
+    - Patients
+
+- [ ] Staff Employee:
+    - Employee ID: unique identifier
+    - Role: Enum of [Staff Roles](#staff-roles)
+    - First Name
+    - Middle Name
+    - Last Name
+    - Email
 
 - [ ] Appointments:
     - Date
@@ -78,9 +86,11 @@
     - Zip Code
     - Name on Card
 
-- [ ] Medications // doctor prescribes medications to patients, this will maybe be a separate relational table
-    - Name
-    - Contraindications
+- [ ] Medications 
+    - Doctor Id
+    - Patient Id
+    - Medication Name
+    - Prescription Date
 
 - [ ] Address
     - Street Line 1
@@ -92,10 +102,12 @@
 
 # Enumeration:
 
-## Roles:
-- Receptionist
-- Nurse
+## Medical Roles:
 - Doctor
+- Nurse
+
+## Staff Roles:
+- Receptionist
 - Admin
 
 ## Status:
