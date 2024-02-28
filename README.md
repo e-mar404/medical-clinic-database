@@ -1,7 +1,7 @@
 - [ ] is not implemented in `main.sql`
 - [x] has been implemented in `main.sql`
 
-Entities/tables needing to be done in main.sql
+# Entities
 
 - [ ] Company
     - Name
@@ -30,7 +30,7 @@ Entities/tables needing to be done in main.sql
 
 - [ ] Employee:
     - Employee ID: unique identifier
-    - Role: Enum of(Admin | Doctor | Nurse | Receptionist)
+    - Role: Enum of [Role](#roles)
     - First Name
     - Middle Name
     - Last Name
@@ -43,7 +43,7 @@ Entities/tables needing to be done in main.sql
     - Clinics ID
     - Doctor ID
     - Confirmation: notification will be sent to patient to check in for appointment
-    - Status: enum of (scheduled, past, in progress, canceled)
+    - Status: enum of [Status](#status)
 
 - [ ] Medical History:
     - Current Medications:
@@ -89,3 +89,23 @@ Entities/tables needing to be done in main.sql
     - State
     - Zip Code
     - Super Key (all above)
+
+# Enumeration:
+
+## Roles:
+- Receptionist
+- Nurse
+- Doctor
+- Admin
+
+## Status:
+- Scheduled
+- In Progress
+- Past
+- Canceled
+
+# Constraints:
+
+- [ ] See what constraints we need to add
+- [ ] ON DELETE
+- [ ] ON UPDATE
