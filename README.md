@@ -80,7 +80,7 @@
 
 - [X] Financial Information:
     - Patient ID
-    - Card Number: primary key
+    - Card Number: <del>primary key</del> *multiple patients may use the same card*
     - CVV
     - Expiration Date
     - <del>Zip Code</del>
