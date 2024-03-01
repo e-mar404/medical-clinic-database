@@ -15,18 +15,13 @@
     - Phone number
     - Company: references a company
 
-- [ ] Patient
+- [X] Patient
     - Patient ID: unique identifier
     - First Name
     - Middle Name: optional
     - Last Name
     - Gender
-    - Weight
-    - Insurance Information: references insurance information 
-    - Financial Information: references financial information
-    - Patient Contact Information: references contact information
-    - Emergency Contact Information: references contact information 
-    - Prefered Pharmacy: references a pharmacy 
+    - <del>Weight</del>
 
 - [ ] Medical Employee:
     - Employee ID: unique identifier
@@ -53,7 +48,7 @@
     - Confirmation
     - Status: enum of [Status](#status)
 
-- [ ] Contact Information:
+- [X] Contact Information:
     - Address: references address table
     - Phone Number
     - Email
@@ -65,7 +60,7 @@
     - Chronic conditions/illnesses
     - Patient ID: references a patient
 
-- [ ] Insurance Information:
+- [X] Insurance Information:
     - Insurance Number
     - Group Number
     - Insurance Name
@@ -83,12 +78,12 @@
     - Address: refernces an address
     - Phone number
 
-- [ ] Financial Information:
+- [X] Financial Information:
     - Patient ID
     - Card Number: primary key
     - CVV
     - Expiration Date
-    - Zip Code
+    - <del>Zip Code</del>
     - Name on Card
 
 - [ ] Medications 
@@ -126,3 +121,4 @@
 - [ ] See what constraints we need to add
 - [ ] ON DELETE
 - [ ] ON UPDATE
+- [ ] Constraint on PatientFinancialInformation where only non-expired cards can be added.
