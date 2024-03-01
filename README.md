@@ -52,6 +52,7 @@
     - Address: references address table
     - Phone Number
     - Email
+    - Patient ID: references a patient
     
 - [ ] Medical History:
     - Current Medications
@@ -65,7 +66,7 @@
     - Group Number
     - Insurance Name
     - Patient ID
-
+    
 - [ ] Consent Forms:
     - Patient ID: references a patient
     - Doctor ID: references a doctor
