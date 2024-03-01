@@ -5,13 +5,15 @@
 
 - [ ] Company
     - Name
-    - Location: references the address table
+    - Location: references an address
     - Phone number
+    - Clinics: references a clinic
 
 - [ ] Clinic
     - Clinic ID: unique identifier
-    - Location: references the address table
+    - Location: references an address 
     - Phone number
+    - Company: references a company
 
 - [ ] Patient
     - Patient ID: unique identifier
@@ -20,13 +22,11 @@
     - Last Name
     - Gender
     - Weight
-    - Address: references address table
-    - Phone Number
-    - Email Address
-    - Insurance Information: references insurance information table
-    - Financial Information: references financial information table
-    - Emergency Contact Information
-    - Prefered Pharmacy: foreign key
+    - Insurance Information: references insurance information 
+    - Financial Information: references financial information
+    - Patient Contact Information: references contact information
+    - Emergency Contact Information: references contact information 
+    - Prefered Pharmacy: references a pharmacy 
 
 - [ ] Medical Employee:
     - Employee ID: unique identifier
@@ -34,8 +34,8 @@
     - First Name
     - Middle Name
     - Last Name
-    - Email
-    - Patients
+    - Email 
+    - Patients: references 1-M patient(s)
 
 - [ ] Staff Employee:
     - Employee ID: unique identifier
@@ -47,18 +47,23 @@
 
 - [ ] Appointments:
     - Date
-    - Patient ID
-    - Clinics ID
-    - Doctor ID
-    - Confirmation: notification will be sent to patient to check in for appointment
+    - Patient ID: references a patient
+    - Doctor ID: references a doctor
+    - Clinics ID: references a clinic
+    - Confirmation
     - Status: enum of [Status](#status)
 
+- [ ] Contact Information:
+    - Address: references address table
+    - Phone Number
+    - Email
+    
 - [ ] Medical History:
-    - Current Medications:
-    - Allergies:
+    - Current Medications
+    - Allergies
     - Past surgeries/medical procedures
     - Chronic conditions/illnesses
-    - Patient ID
+    - Patient ID: references a patient
 
 - [ ] Insurance Information:
     - Insurance Number
@@ -67,15 +72,15 @@
     - Patient ID
 
 - [ ] Consent Forms:
-    - Patient ID
-    - Employee ID (PCP)
-    - Clinic ID
-    - Status
+    - Patient ID: references a patient
+    - Doctor ID: references a doctor
+    - Clinics ID: references a clinic
+    - Confirmation 
 
 - [ ] Preferred Pharmacy:
     - Pharmacy ID: unique identifier
     - Name
-    - Address: refernces address table
+    - Address: refernces an address
     - Phone number
 
 - [ ] Financial Information:
@@ -87,8 +92,8 @@
     - Name on Card
 
 - [ ] Medications 
-    - Doctor Id
-    - Patient Id
+    - Patient ID: references a patient
+    - Doctor ID: references a doctor
     - Medication Name
     - Prescription Date
 
