@@ -22,21 +22,60 @@ CREATE TABLE Clinic (
 );
 
 CREATE TABLE Patient (
-    patient_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50),
+	patient_id SERIAL NOT NULL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
     middle_name VARCHAR(50),
-    last_name VARCHAR(50),
-    date_of_birth DATE,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
     gender CHAR(1),
-    weight DECIMAL(5,2),
-    home_address VARCHAR(255),
+	created DATE,
+    createdby VARCHAR(50),
+    updated DATE,
+    updatedby VARCHAR(50)
+);
+
+CREATE TABLE Patient_ContactInformation (
+	patient_id SERIAL NOT NULL,
+    address VARCHAR(50),
     phone_number VARCHAR(20),
-    email VARCHAR(255),
-    insurance_policy_number VARCHAR(50),
-    insurance_group_number VARCHAR(50),
-    emergency_contact_name VARCHAR(255),
-    emergency_contact_phone VARCHAR(20),
-    emergency_contact_relationship VARCHAR(50),
+	email VARCHAR(255),
+	created DATE,
+    createdby VARCHAR(50),
+    updated DATE,
+    updatedby VARCHAR(50),
+	CONSTRAINT FK_Patient_ContactInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+);
+
+CREATE TABLE Patient_InsuranceInformation (
+	patient_id SERIAL NOT NULL,
+	policy_number VARCHAR(50),
+    group_number VARCHAR(50),
+	created DATE,
+    createdby VARCHAR(50),
+    updated DATE,
+    updatedby VARCHAR(50),
+	CONSTRAINT FK_Patient_InsuranceInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+);
+
+CREATE TABLE Patient_FinancialInformation (
+	patient_id SERIAL NOT NULL,
+    name_on_card VARCHAR(50) NOT NULL,
+    card_number VARCHAR(50) NOT NULL,
+    cvv VARCHAR(50) NOT NULL,
+    expiration_date DATE NOT NULL,
+	CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+);
+
+CREATE TABLE Patient_EmergencyContacts (
+	patient_id SERIAL NOT NULL,
+    contact_name VARCHAR(255) NOT NULL,
+    contact_number VARCHAR(20) NOT NULL,
+    contact_relationship VARCHAR(50) NOT NULL,
+	created DATE,
+    createdby VARCHAR(50),
+    updated DATE,
+    updatedby VARCHAR(50),
+	CONSTRAINT FK_Patient_EmergencyContacts_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
 
 CREATE TABLE MedicalHistory (
