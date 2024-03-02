@@ -71,3 +71,9 @@ CREATE TABLE Clinic(
     -- Location
     -- Contact
 );
+
+CREATE TABLE Company(
+    company_id SERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(50)
+    -- contact
+);
