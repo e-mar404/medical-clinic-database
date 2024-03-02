@@ -11,12 +11,15 @@ DROP TABLE IF EXISTS Medication;
 DROP TABLE IF EXISTS Appointment;
 DROP TABLE IF EXISTS MEmployee;
 DROP TABLE IF EXISTS SEmployee;
+DROP TABLE IF EXISTS Patient_MedicalHistory;
+DROP TABLE IF EXISTS Patient_MedicalProcedure;
 DROP TABLE IF EXISTS Patient_EmergencyContacts;
 DROP TABLE IF EXISTS Patient_FinancialInformation;
 DROP TABLE IF EXISTS Patient_InsuranceInformation;
 DROP TABLE IF EXISTS Patient_ContactInformation;
 DROP TABLE IF EXISTS Patient;
 DROP TABLE IF EXISTS ContactInformation;
+DROP TABLE IF EXISTS ManagedBy;
 DROP TABLE IF EXISTS Clinic;
 DROP TABLE IF EXISTS Company;
 
@@ -31,23 +34,23 @@ CREATE TABLE ContactInformation (
     updatedby VARCHAR(50)
 );
 
-CREATE TABLE Clinic (
-    clinic_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    clinic_name VARCHAR(50) NOT NULL
-    /* Location, Contact Information Needed */
-);
-
 CREATE TABLE Company (
     company_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     company_name VARCHAR(50) NOT NULL
     /* Location, Contact Information Needed */
 );
 
-CREATE TABLE MangedBy (
+CREATE TABLE Clinic (
+    clinic_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    clinic_name VARCHAR(50) NOT NULL
+    /* Location, Contact Information Needed */
+);
+
+CREATE TABLE ManagedBy (
     company_id INT NOT NULL,
     clinic_id INT NOT NULL,
-    CONSTRAINT Fk_company_id FOREIGN KEY (company_id) REFERENCES Company (company_id),
-    CONSTRAINT Fk_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id)
+    CONSTRAINT FK_ManagedBy_company_id FOREIGN KEY (company_id) REFERENCES Company (company_id),
+    CONSTRAINT FK_ManagedBy_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id)
 );
 
 /* Employee Tables */
@@ -93,6 +96,32 @@ CREATE TABLE Patient (
     updated DATE,
     updatedby VARCHAR(50),
     CONSTRAINT FK_Patient_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address)
+);
+
+CREATE TABLE Patient_MedicalHistory (
+	patient_id INT NOT NULL,
+    conditions TEXT,
+    allergies TEXT,
+    family_history TEXT,
+    created DATE,
+    createdby VARCHAR(50),
+    updated DATE,
+    updatedby VARCHAR(50),
+    CONSTRAINT FK_Patient_MedicalHistory_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+);
+
+CREATE TABLE Patient_MedicalProcedure (
+	procedure_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	patient_id INT NOT NULL,
+	doctor_id INT NOT NULL,
+    procedure_date DATE NOT NULL,
+    procedure_description TEXT NOT NULL,
+    created DATE,
+    createdby VARCHAR(50),
+    updated DATE,
+    updatedby VARCHAR(50),
+    CONSTRAINT FK_Patient_MedicalProcedure_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+    CONSTRAINT FK_Patient_MedicalProcedure_doctor_id FOREIGN KEY (patient_id) REFERENCES MEmployee (memployee_id)
 );
 
 CREATE TABLE Patient_InsuranceInformation (
@@ -145,13 +174,13 @@ CREATE TABLE Appointment (
     CONSTRAINT FK_Appointment_doctor_id FOREIGN KEY (doctor_id) REFERENCES MEmployee (memployee_id)
 );
 
-/* Medical History Table needed */
-
 CREATE TABLE Medication (
     patient_id INT NOT NULL,
     doctor_id INT NOT NULL,
     medication_name VARCHAR(50),
     medication_date DATE NOT NULL,
+    procedure_id INT,
     CONSTRAINT FK_Medication_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-    CONSTRAINT FK_Medication_doctor_id FOREIGN KEY (doctor_id) REFERENCES MEmployee (memployee_id)
+    CONSTRAINT FK_Medication_doctor_id FOREIGN KEY (doctor_id) REFERENCES MEmployee (memployee_id),
+    CONSTRAINT FK_Medication_procedure_id FOREIGN KEY (procedure_id) REFERENCES Patient_MedicalProcedure (procedure_id)
 );
