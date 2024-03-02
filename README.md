@@ -23,16 +23,16 @@
     - Gender
     - <del>Weight</del>
 
-- [ ] Medical Employee:
+- [X] Medical Employee:
     - Employee ID: unique identifier
     - Role Enum of [Medical Roles](#medical-roles)
     - First Name
     - Middle Name
     - Last Name
     - Email 
-    - Patients: references 1-M patient(s)
+    - Patients: references 1-M patient(s) *NOT IMPLEMENTED*
 
-- [ ] Staff Employee:
+- [X] Staff Employee:
     - Employee ID: unique identifier
     - Role: Enum of [Staff Roles](#staff-roles)
     - First Name
