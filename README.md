@@ -3,13 +3,13 @@
 
 # Entities
 
-- [ ] Company
+- [ ] Company EM
     - Name
     - Location: references an address
     - Phone number
     - Clinics: references a clinic
 
-- [ ] Clinic
+- [ ] Clinic EM
     - Clinic ID: unique identifier
     - Location: references an address 
     - Phone number
@@ -39,7 +39,7 @@
     - Last Name
     - Email
 
-- [ ] Appointments:
+- [ ] Appointments: EM
     - Date
     - Patient ID: references a patient
     - Doctor ID: references a doctor
@@ -102,6 +102,8 @@
     - Super Key (all above)
 
 # Enumeration:
+ 
+- [x] Done by YR
 
 ## Medical Roles:
 - Doctor

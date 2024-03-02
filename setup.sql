@@ -1,5 +1,7 @@
 -- Create schema/database to put tables into, need to do use db to not require dot notation
 CREATE DATABASE IF NOT EXISTS CLINIC;
+
+-- this is only needed in case the db is not selected from the workbench or from the cli mysql tool
 USE CLINIC;
 
 -- Drop tables and reinitialize
