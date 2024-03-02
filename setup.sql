@@ -43,6 +43,13 @@ CREATE TABLE Company (
     /* Location, Contact Information Needed */
 );
 
+CREATE TABLE MangedBy (
+    company_id INT NOT NULL,
+    clinic_id INT NOT NULL,
+    CONSTRAINT Fk_company_id FOREIGN KEY (company_id) REFERENCES Company (company_id),
+    CONSTRAINT Fk_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id)
+);
+
 /* Employee Tables */
 CREATE TABLE MEmployee (
     memployee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
