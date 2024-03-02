@@ -1,11 +1,3 @@
-/*  Reinitialize clinic_db */
-DROP DATABASE IF EXISTS CLINIC_DB;
-
-CREATE DATABASE CLINIC_DB;
-
-/* this is only needed in case the db is not selected from the workbench or from the cli mysql tool */
-USE CLINIC_DB;
-
 DROP DATABASE IF EXISTS mdb;
 CREATE DATABASE mdb;
 USE mdb;
