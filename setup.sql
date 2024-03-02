@@ -1,14 +1,10 @@
--- Create schema/database to put tables into, need to do use db to not require dot notation
-CREATE DATABASE IF NOT EXISTS CLINIC;
+-- Reinizialize clinic_db
+DROP DATABASE IF EXISTS CLINIC_DB;
+
+CREATE DATABASE CLINIC_DB;
 
 -- this is only needed in case the db is not selected from the workbench or from the cli mysql tool
-USE CLINIC;
-
--- Drop tables and reinitialize
-DROP TABLE IF EXISTS Patient;
-DROP TABLE IF EXISTS MEmployee;
-DROP TABLE IF EXISTS SEmployee;
-DROP TABLE IF EXISTS Appointment;
+USE CLINIC_DB;
 
 CREATE TABLE Patient(
     patient_id BINARY(16) NOT NULL PRIMARY KEY,
@@ -60,11 +56,18 @@ CREATE TABLE Appointment (
     date DATE NOT NULL,
     patient_id BINARY(16),
     doctor_id BINARY(16),
-    clinicId BINARY(16),
+    clinic_id BINARY(16), 
     confirmation SMALLINT,
     status ENUM('scheduled', 'in_progress', 'past', 'canceled'),
     created DATE,
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50)
+);
+
+CREATE TABLE Clinic(
+    clinic_id binary(16) NOT NULL PRIMARY KEY,
+    name VARCHAR(50)
+    -- Location
+    -- Contact
 );
