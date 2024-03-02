@@ -21,7 +21,6 @@
     - Middle Name: optional
     - Last Name
     - Gender
-    - <del>Weight</del>
 
 - [X] Medical Employee:
     - Employee ID: unique identifier
@@ -57,6 +56,7 @@
 - [ ] Medical History:
     - Current Medications
     - Allergies
+    - Weight
     - Past surgeries/medical procedures
     - Chronic conditions/illnesses
     - Patient ID: references a patient
