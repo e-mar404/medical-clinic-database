@@ -3,13 +3,13 @@
 
 # Entities
 
-- [ ] Company EM
+- [x] Company EM
     - Name
     - Location: references an address
     - Phone number
     - Clinics: references a clinic
 
-- [ ] Clinic EM
+- [x] Clinic EM
     - Clinic ID: unique identifier
     - Location: references an address 
     - Phone number
@@ -39,7 +39,7 @@
     - Last Name
     - Email
 
-- [ ] Appointments: EM
+- [x] Appointments: EM
     - Date
     - Patient ID: references a patient
     - Doctor ID: references a doctor
@@ -53,7 +53,7 @@
     - Email
     - Patient ID: references a patient
     
-- [ ] Medical History:
+- [x] Medical History:
     - Current Medications
     - Allergies
     - Weight
@@ -67,13 +67,13 @@
     - Insurance Name
     - Patient ID
     
-- [ ] Consent Forms:
+- [x] Consent Forms:
     - Patient ID: references a patient
     - Doctor ID: references a doctor
     - Clinics ID: references a clinic
     - Confirmation 
 
-- [ ] Preferred Pharmacy:
+- [x] Preferred Pharmacy:
     - Pharmacy ID: unique identifier
     - Name
     - Address: refernces an address
@@ -87,13 +87,13 @@
     - <del>Zip Code</del>
     - Name on Card
 
-- [ ] Medications 
+- [x] Medications 
     - Patient ID: references a patient
     - Doctor ID: references a doctor
     - Medication Name
     - Prescription Date
 
-- [ ] Address
+- [x] Address
     - Street Line 1
     - Street Line 2: optional
     - City
@@ -117,11 +117,3 @@
 - Scheduled
 - In Progress
 - Past
-- Canceled
-
-# Constraints:
-
-- [ ] See what constraints we need to add
-- [ ] ON DELETE
-- [ ] ON UPDATE
-- [ ] Constraint on PatientFinancialInformation where only non-expired cards can be added.
