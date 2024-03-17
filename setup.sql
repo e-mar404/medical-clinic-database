@@ -111,7 +111,10 @@ CREATE TABLE Patient (
 
 CREATE TABLE Patient_Login (
   email_address VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL
+  password VARCHAR(50) NOT NULL,
+  patient_id INT NOT NULL,
+  CONSTRAINT FK_Patient_Login_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address),
+  CONSTRAINT FK_Patient_Login_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
 
 CREATE TABLE Patient_MedicalHistory (
