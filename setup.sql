@@ -65,10 +65,11 @@ CREATE TABLE ManagedBy (
 );
 
 /* Employee Tables */
-CREATE TABLE MEmployee (
-    memployee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Employee (
+    employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email_address VARCHAR(50) NOT NULL,
-    employee_role ENUM ('Doctor', 'Nurse'),
+    employee_type ENUM('Medical', 'Staff'), 
+    employee_role ENUM ('Doctor', 'Nurse', 'Receptionist', 'Administrator'),
     first_name VARCHAR(50) NOT NULL,
     middle_name VARCHAR(50),
     last_name VARCHAR(50) NOT NULL,
@@ -79,18 +80,12 @@ CREATE TABLE MEmployee (
     CONSTRAINT FK_MEmployee_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address)
 );
 
-CREATE TABLE SEmployee (
-    semployee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    email_address VARCHAR(50) NOT NULL,
-    employee_role ENUM ('Receptionist', 'Administrator'),
-    first_name VARCHAR(50) NOT NULL,
-    middle_name VARCHAR(50),
-    last_name VARCHAR(50) NOT NULL,
-    created DATE,
-    createdby VARCHAR(50),
-    updated DATE,
-    updatedby VARCHAR(50),
-    CONSTRAINT FK_SEmployee_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address)
+CREATE TABLE Employee_Login (
+  email_address VARCHAR(50) NOT NULL,
+  password VARCHAR(50) NOT NULL,
+  employee_id INT NOT NULL,
+  CONSTRAINT FK_Employee_Login_employee_id FOREIGN KEY (employee_id) REFERENCES Employee (employee_id),
+  CONSTRAINT FK_Employee_Login_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address)
 );
 
 /* Patient Tables */
