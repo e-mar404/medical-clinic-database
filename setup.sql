@@ -5,8 +5,7 @@ USE mdb;
 /* Drop tables and reinitialize */
 DROP TABLE IF EXISTS Medication;
 DROP TABLE IF EXISTS Appointment;
-DROP TABLE IF EXISTS MEmployee;
-DROP TABLE IF EXISTS SEmployee;
+DROP TABLE IF EXISTS Employee;
 DROP TABLE IF EXISTS Patient_MedicalHistory;
 DROP TABLE IF EXISTS Patient_MedicalProcedure;
 DROP TABLE IF EXISTS Patient_EmergencyContacts;
@@ -68,6 +67,7 @@ CREATE TABLE ManagedBy (
 CREATE TABLE Employee (
     employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email_address VARCHAR(50) NOT NULL,
+    primary_clinic INT,
     employee_type ENUM('Medical', 'Staff'), 
     employee_role ENUM ('Doctor', 'Nurse', 'Receptionist', 'Administrator'),
     first_name VARCHAR(50) NOT NULL,
@@ -77,7 +77,8 @@ CREATE TABLE Employee (
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_MEmployee_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address)
+    CONSTRAINT FK_Employee_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address),
+    CONSTRAINT FK_Employee_primary_clinic FOREIGN KEY (primary_clinic) REFERENCES Clinic (clinic_id)
 );
 
 CREATE TABLE Employee_Login (
@@ -97,11 +98,13 @@ CREATE TABLE Patient (
     last_name VARCHAR(50) NOT NULL,
     date_of_birth DATE NOT NULL,
     gender CHAR(1),
+    primary_doctor_id INT,
     created DATE,
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address)
+    CONSTRAINT FK_Patient_email_address FOREIGN KEY (email_address) REFERENCES ContactInformation (email_address),
+    CONSTRAINT FK_Patient_primary_doctor_id FOREIGN KEY (primary_doctor_id) REFERENCES Employee (employee_id)
 );
 
 CREATE TABLE Patient_Login (
@@ -113,30 +116,30 @@ CREATE TABLE Patient_Login (
 );
 
 CREATE TABLE Patient_MedicalHistory (
-	patient_id INT NOT NULL,
-    conditions TEXT,
-    allergies TEXT,
-    family_history TEXT,
-    created DATE,
-    createdby VARCHAR(50),
-    updated DATE,
-    updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_MedicalHistory_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-    CONSTRAINT UC_Patient_MedicalHistory_patient_id UNIQUE (patient_id)
+  patient_id INT NOT NULL,
+  conditions TEXT,
+  allergies TEXT,
+  family_history TEXT,
+  created DATE,
+  createdby VARCHAR(50),
+  updated DATE,
+  updatedby VARCHAR(50),
+  CONSTRAINT FK_Patient_MedicalHistory_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+  CONSTRAINT UC_Patient_MedicalHistory_patient_id UNIQUE (patient_id)
 );
 
 CREATE TABLE Patient_MedicalProcedure (
 	procedure_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	patient_id INT NOT NULL,
-	doctor_id INT NOT NULL,
-    procedure_date DATE NOT NULL,
-    procedure_description TEXT NOT NULL,
-    created DATE,
-    createdby VARCHAR(50),
-    updated DATE,
-    updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_MedicalProcedure_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-    CONSTRAINT FK_Patient_MedicalProcedure_doctor_id FOREIGN KEY (patient_id) REFERENCES MEmployee (memployee_id)
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  procedure_date DATE NOT NULL,
+  procedure_description TEXT NOT NULL,
+  created DATE,
+  createdby VARCHAR(50),
+  updated DATE,
+  updatedby VARCHAR(50),
+  CONSTRAINT FK_Patient_MedicalProcedure_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+  CONSTRAINT FK_Patient_MedicalProcedure_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
 );
 
 CREATE TABLE Patient_InsuranceInformation (
@@ -178,33 +181,68 @@ CREATE TABLE Patient_EmergencyContacts (
 
 /* Supporting Tables */
 CREATE TABLE Appointment (
-	appointment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    appointment_date DATE NOT NULL,
-    appointment_status ENUM('scheduled', 'in_progress', 'past', 'canceled') NOT NULL,
-    clinic_id INT NOT NULL, 
-    patient_id INT NOT NULL,
-    doctor_id INT NOT NULL,
-    confirmation SMALLINT,
-    created DATE,
-    createdby VARCHAR(50),
-    updated DATE,
-    updatedby VARCHAR(50),
-    CONSTRAINT FK_Appointment_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id),
-    CONSTRAINT FK_Appointment_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-    CONSTRAINT FK_Appointment_doctor_id FOREIGN KEY (doctor_id) REFERENCES MEmployee (memployee_id)
+  appointment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  appointment_date DATE NOT NULL,
+  appointment_status ENUM('scheduled', 'in_progress', 'past', 'canceled') NOT NULL,
+  clinic_id INT NOT NULL, 
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  confirmation SMALLINT,
+  created DATE,
+  createdby VARCHAR(50),
+  updated DATE,
+  updatedby VARCHAR(50),
+  CONSTRAINT FK_Appointment_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id),
+  CONSTRAINT FK_Appointment_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+  CONSTRAINT FK_Appointment_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
 );
 
 CREATE TABLE Medication (
-    patient_id INT NOT NULL,
-    doctor_id INT NOT NULL,
-    medication_name VARCHAR(50),
-    medication_date DATE NOT NULL,
-    procedure_id INT,
-	created DATE,
-    createdby VARCHAR(50),
-    updated DATE,
-    updatedby VARCHAR(50),
-    CONSTRAINT FK_Medication_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-    CONSTRAINT FK_Medication_doctor_id FOREIGN KEY (doctor_id) REFERENCES MEmployee (memployee_id),
-    CONSTRAINT FK_Medication_procedure_id FOREIGN KEY (procedure_id) REFERENCES Patient_MedicalProcedure (procedure_id)
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  medication_name VARCHAR(50),
+  medication_date DATE NOT NULL,
+  procedure_id INT,
+  created DATE,
+  createdby VARCHAR(50),
+  updated DATE,
+  updatedby VARCHAR(50),
+  CONSTRAINT FK_Medication_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+  CONSTRAINT FK_Medication_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id),
+  CONSTRAINT FK_Medication_procedure_id FOREIGN KEY (procedure_id) REFERENCES Patient_MedicalProcedure (procedure_id)
+);
+
+/* Views */
+CREATE VIEW all_appointments(appintment_date, doctor_fname, doctor_lname, patient_fname, patient_lname)
+AS (
+  SELECT A.appointment_date, D.first_name, D.last_name, P.first_name, P.last_name
+  FROM Appointment AS A, Employee AS D, Patient AS P
+  WHERE A.doctor_id=D.employee_id AND A.patient_id=P.patient_id
+  ORDER BY A.appointment_date 
+);
+
+CREATE VIEW primary_doctor_for_patient(doctor_fname, doctor_lname, patient_fname, patient_lname) 
+AS (
+	SELECT  D.first_name, D.last_name, P.first_name, P.last_name
+  FROM Employee AS D, Patient AS P
+  WHERE D.employee_id=P.primary_doctor_id
+);
+
+CREATE VIEW primary_clinic_for_employee(clinic_id, clinc_name, employee_fname, employee_lname)
+AS (
+  SELECT C.clinic_id, C.clinic_name, E.first_name, E.last_name
+  FROM Clinic AS C, Employee AS E
+  WHERE C.clinic_id=E.primary_clinic
+);
+
+CREATE VIEW num_patients_at_clinic(clinic_id, clinic_name, number_of_patients)
+AS (
+  SELECT C.clinic_id, C.clinic_name, COUNT(*)
+  FROM Clinic as C
+  RIGHT OUTER JOIN (
+    SELECT P.patient_id AS p_id, C.clinic_id AS c_id
+    FROM Clinic AS C, Patient AS P, Employee AS D
+    WHERE P.primary_doctor_id=D.employee_id AND D.primary_clinic=C.clinic_id
+  ) patient_list ON C.clinic_id=patient_list.c_id
+  GROUP BY C.clinic_id
 );
