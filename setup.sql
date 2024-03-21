@@ -192,6 +192,7 @@ CREATE TABLE Appointment (
   createdby VARCHAR(50),
   updated DATE,
   updatedby VARCHAR(50),
+  appointment_time TIME NOT NULL,
   CONSTRAINT FK_Appointment_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id),
   CONSTRAINT FK_Appointment_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
   CONSTRAINT FK_Appointment_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
