@@ -24,7 +24,7 @@ VALUES
   ('doctor1@gmail.com', 1, 'medical', 'doctor', 'doctor', 'one'),
   ('doctor2@gmail.com', 2, 'medical', 'doctor', 'doctor', 'two'),
   ('admin1@gmail.com', 1, 'staff', 'administrator', 'admin', 'one'),
-  ('admin2@gmail.com', 1, 'staff', 'administratr', 'admin', 'one');
+  ('admin2@gmail.com', 1, 'staff', 'administrator', 'admin', 'one');
 
 INSERT INTO 
   Patient(email_address, first_name, last_name, date_of_birth, primary_doctor_id) 
