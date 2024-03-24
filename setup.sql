@@ -183,16 +183,16 @@ CREATE TABLE Patient_EmergencyContacts (
 CREATE TABLE Appointment (
   appointment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   appointment_date DATE NOT NULL,
-  appointment_status ENUM('scheduled', 'in_progress', 'past', 'canceled') NOT NULL,
+  appointment_status ENUM('scheduled', 'past', 'canceled') NOT NULL,
   clinic_id INT NOT NULL, 
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,
+  appointment_time TIME NOT NULL,
   confirmation SMALLINT,
   created DATE,
   createdby VARCHAR(50),
   updated DATE,
   updatedby VARCHAR(50),
-  appointment_time TIME NOT NULL,
   CONSTRAINT FK_Appointment_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id),
   CONSTRAINT FK_Appointment_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
   CONSTRAINT FK_Appointment_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
