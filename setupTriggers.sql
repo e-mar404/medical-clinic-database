@@ -1,3 +1,5 @@
+USE mdb;
+
 /* Trigger logic for Employee table to check if type and role is inputted correctly. */
 DELIMITER //
 DROP TRIGGER IF EXISTS Employee_CheckRolesTrigger;

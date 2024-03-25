@@ -38,12 +38,12 @@ INSERT INTO
   Employee_Login(email_address, password, employee_id)
 VALUES
   ('doctor1@gmail.com', 'password', 1),
-  ('admin1@gmail.com', 'password', 1),
-  ('admin2@gmail.com', 'password', 2),
-  ('doctor2@gmail.com', 'password', 2);
+  ('doctor2@gmail.com', 'password', 2),
+  ('admin1@gmail.com', 'password', 3),
+  ('admin2@gmail.com', 'password', 4);
 
 INSERT INTO
   Patient_Login(email_address, password, patient_id)
 VALUES
   ('patient1@gmail.com', 'password', 1),
-  ('patient2@gmail.com', 'password', 2),
+  ('patient2@gmail.com', 'password', 2);
