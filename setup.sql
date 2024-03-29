@@ -70,11 +70,8 @@ CREATE TABLE Employee (
     primary_clinic INT,
     employee_type ENUM('Medical', 'Staff'), 
     employee_role ENUM ('Doctor', 'Nurse', 'Receptionist', 'Administrator'),
-<<<<<<< HEAD
-=======
     specialist BOOL DEFAULT FALSE,
     title VARCHAR(50),
->>>>>>> be9734d (add referral table + specialist attributes to employee table)
     first_name VARCHAR(50) NOT NULL,
     middle_name VARCHAR(50),
     last_name VARCHAR(50) NOT NULL,
