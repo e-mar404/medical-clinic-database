@@ -218,8 +218,6 @@ CREATE TABLE Medication (
   CONSTRAINT FK_Medication_procedure_id FOREIGN KEY (procedure_id) REFERENCES Patient_MedicalProcedure (procedure_id)
 );
 
-<<<<<<< HEAD
-=======
 CREATE TABLE Referral (
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,
@@ -228,7 +226,6 @@ CREATE TABLE Referral (
   CONSTRAINT FK_Referral_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
 );
 
->>>>>>> be9734d (add referral table + specialist attributes to employee table)
 /* Views */
 CREATE VIEW all_appointments(appintment_date, doctor_fname, doctor_lname, patient_fname, patient_lname)
 AS (

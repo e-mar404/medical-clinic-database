@@ -1,9 +1,5 @@
 USE mdb;
 
-<<<<<<< HEAD
-/* Trigger logic for Employee table to check if type and role is inputted correctly. */
-=======
->>>>>>> be9734d (add referral table + specialist attributes to employee table)
 DELIMITER //
 DROP TRIGGER IF EXISTS Employee_CheckRolesTrigger;
 CREATE TRIGGER Employee_CheckRolesTrigger

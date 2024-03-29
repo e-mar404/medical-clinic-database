@@ -11,11 +11,8 @@ INSERT INTO
 VALUES
   ('doctor1@gmail.com', '1234567890', '1 street dr'),
   ('doctor2@gmail.com', '1234567890', '1 street dr'),
-<<<<<<< HEAD
-=======
   ('specialist1@gmail.com', '1234567890', '1 street dr'),
   ('specialist2@gmail.com', '1234567890', '1 street dr'),
->>>>>>> be9734d (add referral table + specialist attributes to employee table)
   ('admin1@gmail.com', '1234567890', '1 street dr'),
   ('admin2@gmail.com', '1234567890', '1 street dr'),
   ('patient1@gmail.com', '1234567890', '1 street dr'),
@@ -24,14 +21,6 @@ VALUES
   ('patient4@gmail.com', '1234567890', '1 street dr');    
 
 INSERT INTO
-<<<<<<< HEAD
-  Employee(email_address, primary_clinic, employee_type, employee_role, first_name, last_name) 
-VALUES 
-  ('doctor1@gmail.com', 1, 'medical', 'doctor', 'doctor', 'one'),
-  ('doctor2@gmail.com', 2, 'medical', 'doctor', 'doctor', 'two'),
-  ('admin1@gmail.com', 1, 'staff', 'administrator', 'admin', 'one'),
-  ('admin2@gmail.com', 1, 'staff', 'administrator', 'admin', 'one');
-=======
   Employee(email_address, primary_clinic, employee_type, employee_role, specialist, title, first_name, last_name) 
 VALUES 
   ('doctor1@gmail.com', 1, 'medical', 'doctor', false, 'Family Doctor', 'doctor', 'one'),
@@ -40,7 +29,6 @@ VALUES
   ('specialist2@gmail.com', 2, 'medical', 'doctor', true, 'Neurologist', 'specialist', 'two'),
   ('admin1@gmail.com', 1, 'staff', 'administrator', false, 'Manager', 'admin', 'one'),
   ('admin2@gmail.com', 2, 'staff', 'administrator', false, 'Manager', 'admin', 'one');
->>>>>>> be9734d (add referral table + specialist attributes to employee table)
 
 INSERT INTO 
   Patient(email_address, first_name, last_name, date_of_birth, primary_doctor_id) 
