@@ -43,8 +43,10 @@ INSERT INTO
 VALUES
   ('doctor1@gmail.com', 'password', 1),
   ('doctor2@gmail.com', 'password', 2),
-  ('admin1@gmail.com', 'password', 3),
-  ('admin2@gmail.com', 'password', 4);
+  ('specialist1@gmail.com', 'password', 3),
+  ('specialist2@gmail.com', 'password', 4),
+  ('admin1@gmail.com', 'password', 5),
+  ('admin2@gmail.com', 'password', 6);
 
 INSERT INTO
   Patient_Login(email_address, password, patient_id)
