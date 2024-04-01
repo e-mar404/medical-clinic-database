@@ -232,9 +232,9 @@ AS (
   ORDER BY A.appointment_date 
 );
 
-CREATE VIEW primary_doctor_for_patient(doctor_fname, doctor_lname, patient_fname, patient_lname) 
+CREATE VIEW primary_doctor_for_patient(doctor_id, doctor_fname, doctor_lname, patient_id, patient_fname, patient_lname) 
 AS (
-	SELECT  D.first_name, D.last_name, P.first_name, P.last_name
+	SELECT  D.employee_id, D.first_name, D.last_name, P.patient_id, P.first_name, P.last_name
   FROM Employee AS D, Patient AS P
   WHERE D.employee_id=P.primary_doctor_id
 );
