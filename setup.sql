@@ -131,7 +131,7 @@ CREATE TABLE Patient_MedicalHistory (
 );
 
 CREATE TABLE Patient_MedicalProcedure (
-	procedure_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  procedure_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,
   procedure_date DATE NOT NULL,
@@ -162,11 +162,12 @@ CREATE TABLE Patient_FinancialInformation (
     card_number VARCHAR(50) NOT NULL,
     cvv VARCHAR(50) NOT NULL,
     expiration_date DATE NOT NULL,
-	created DATE,
+    created DATE,
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+    CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+    CONSTRAINT UC_Patient_FinancialInformation_patient_id UNIQUE (patient_id)
 );
 
 CREATE TABLE Patient_EmergencyContacts (
@@ -178,7 +179,8 @@ CREATE TABLE Patient_EmergencyContacts (
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_EmergencyContacts_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+    CONSTRAINT FK_Patient_EmergencyContacts_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+    CONSTRAINT UC_Patient_EmergencyContacts_patient_id UNIQUE (patient_id)
 );
 
 /* Supporting Tables */
