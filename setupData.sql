@@ -52,4 +52,12 @@ INSERT INTO
   Patient_Login(email_address, password, patient_id)
 VALUES
   ('patient1@gmail.com', 'password', 1),
-  ('patient2@gmail.com', 'password', 2);
+  ('patient2@gmail.com', 'password', 2),
+  ('patient3@gmail.com', 'password', 3),
+  ('patient4@gmail.com', 'password', 4);
+   
+INSERT INTO
+  Referral(patient_id, doctor_id,  expiration_date)
+VALUES
+  (1, 1, Date '2024-05-01'),
+  (2, 1, Date '2024-05-01');

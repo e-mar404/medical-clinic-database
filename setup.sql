@@ -207,14 +207,12 @@ CREATE TABLE Medication (
   doctor_id INT NOT NULL,
   medication_name VARCHAR(50),
   medication_date DATE NOT NULL,
-  procedure_id INT,
   created DATE,
   createdby VARCHAR(50),
   updated DATE,
   updatedby VARCHAR(50),
   CONSTRAINT FK_Medication_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-  CONSTRAINT FK_Medication_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id),
-  CONSTRAINT FK_Medication_procedure_id FOREIGN KEY (procedure_id) REFERENCES Patient_MedicalProcedure (procedure_id)
+  CONSTRAINT FK_Medication_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
 );
 
 CREATE TABLE Referral (
