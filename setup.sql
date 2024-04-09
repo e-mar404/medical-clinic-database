@@ -2,6 +2,9 @@ DROP DATABASE IF EXISTS mdb;
 CREATE DATABASE mdb;
 USE mdb;
 
+SET GLOBAL time_zone = '-05:00';
+SET SESSION time_zone ='-05:00';
+
 /* Drop tables and reinitialize */
 DROP TABLE IF EXISTS Medication;
 DROP TABLE IF EXISTS Appointment;
