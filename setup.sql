@@ -187,7 +187,7 @@ CREATE TABLE Patient_EmergencyContacts (
 CREATE TABLE Appointment (
   appointment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   appointment_date DATE NOT NULL,
-  appointment_status ENUM('scheduled', 'past', 'canceled') NOT NULL,
+  appointment_status ENUM('scheduled', 'past', 'cancelled') NOT NULL,
   clinic_id INT NOT NULL, 
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,

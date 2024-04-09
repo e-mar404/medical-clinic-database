@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE EVENT CheckForNoShowAppointment
+ON SCHEDULE EVERY 45 MINUTE
+STARTS TIMESTAMP(CURDATE(), '09:00:00')
+ENDS TIMESTAMP(CURDATE(), '17:00:00')
+DO
+BEGIN
+    CALL check_for_no_show_appointments();
+END; //
