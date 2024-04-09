@@ -46,6 +46,7 @@ BEGIN
       SELECT * 
 		  FROM mdb.Referral AS R, Employee AS D
 			WHERE 
+        R.expiration_date > CURDATE() AND
 		  	R.patient_id=NEW.patient_id AND
         R.doctor_id=NEW.doctor_id AND
         D.employee_id=NEW.doctor_id AND
