@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE PROCEDURE update_no_show_appointments()
+CREATE PROCEDURE check_for_no_show_appointments()
 BEGIN
 	UPDATE Appointment
   SET appointment_status='cancelled'
