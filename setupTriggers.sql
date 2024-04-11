@@ -66,10 +66,10 @@ BEGIN
       FROM Charges AS C
       WHERE
         NEW.appointment_status='no show' AND
-        C.date_charged >= CURDATE() AND
+        C.date_charged=NEW.appointment_date AND
         C.patient_id=NEW.patient_id
     ) THEN
-      INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 15.00, CURDATE());
+      INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 15.00, NEW.appointment_date);
   END IF;
 END; //
 
