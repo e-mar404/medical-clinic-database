@@ -1,6 +1,7 @@
 USE mdb;
 
 DROP TRIGGER IF EXISTS Appointment_CheckForReferral;
+DROP TRIGGER IF EXISTS Appointment_ChargePatientForNoShow;
 DROP TRIGGER IF EXISTS Employee_CheckRolesTrigger;
 DROP TRIGGER IF EXISTS ContactInformation_ITrigger;
 DROP TRIGGER IF EXISTS ContactInformation_UTrigger;
@@ -54,6 +55,24 @@ BEGIN
 		      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Patient needs referral to see specialist, please contact your primary care doctor';
 	END IF;
 END; //
+
+DELIMITER //
+CREATE TRIGGER Appointment_ChargePatientForNoShow
+AFTER UPDATE ON Appointment
+FOR EACH ROW
+BEGIN
+  IF NOT EXISTS (
+      SELECT C.patient_id
+      FROM Charges AS C
+      WHERE
+        NEW.appointment_status='no show' AND
+        C.date_charged >= CURDATE() AND
+        C.patient_id=NEW.patient_id
+    ) THEN
+      INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 15.00, CURDATE());
+  END IF;
+END; //
+
 
 DELIMITER //
 CREATE TRIGGER Employee_CheckRolesTrigger

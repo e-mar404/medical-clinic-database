@@ -190,12 +190,12 @@ CREATE TABLE Patient_EmergencyContacts (
 CREATE TABLE Appointment (
   appointment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   appointment_date DATE NOT NULL,
-  appointment_status ENUM('scheduled', 'past', 'cancelled') NOT NULL,
+  appointment_status ENUM('scheduled', 'past', 'cancelled', 'no show') NOT NULL,
   clinic_id INT NOT NULL, 
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,
   appointment_time TIME NOT NULL,
-  confirmation SMALLINT,
+  confirmation TINYINT DEFAULT FALSE,
   created DATE,
   createdby VARCHAR(50),
   updated DATE,
@@ -224,6 +224,14 @@ CREATE TABLE Referral (
   expiration_date DATE,
   CONSTRAINT FK_Referral_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
   CONSTRAINT FK_Referral_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
+);
+
+CREATE TABLE Charges (
+  patient_id INT NOT NULL,
+  amount DECIMAL,
+  date_charged DATE,
+  paid TINYINT DEFAULT FALSE,
+  CONSTRAINT FK_Charges_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
 
 /* Views */
