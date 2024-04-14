@@ -9,12 +9,14 @@ VALUES
 INSERT INTO 
   ContactInformation(email_address, phone_number, address) 
 VALUES
-  ('doctor1@gmail.com', '1234567890', '1 street dr'),
-  ('doctor2@gmail.com', '1234567890', '1 street dr'),
-  ('specialist1@gmail.com', '1234567890', '1 street dr'),
-  ('specialist2@gmail.com', '1234567890', '1 street dr'),
-  ('admin1@gmail.com', '1234567890', '1 street dr'),
-  ('admin2@gmail.com', '1234567890', '1 street dr'),
+  ('doctor1@medc.org', '1234567890', '1 street dr'),
+  ('doctor2@medc.org', '1234567890', '1 street dr'),
+  ('specialist1@medc.org', '1234567890', '1 street dr'),
+  ('specialist2@medc.org', '1234567890', '1 street dr'),
+  ('admin1@medc.org', '1234567890', '1 street dr'),
+  ('admin2@medc.org', '1234567890', '1 street dr'),
+  ('receptionist1@medc.org', '1234567890', '1 street dr'),
+  ('receptionist2@medc.org', '1234567890', '1 street dr'),
   ('patient1@gmail.com', '1234567890', '1 street dr'),
   ('patient2@gmail.com', '1234567890', '1 street dr'),
   ('patient3@gmail.com', '1234567890', '1 street dr'),
@@ -23,12 +25,15 @@ VALUES
 INSERT INTO
   Employee(email_address, primary_clinic, employee_type, employee_role, specialist, title, first_name, last_name) 
 VALUES 
-  ('doctor1@gmail.com', 1, 'medical', 'doctor', false, 'Family Doctor', 'doctor', 'one'),
-  ('doctor2@gmail.com', 2, 'medical', 'doctor', false, 'Family Doctor', 'doctor', 'two'),
-  ('specialist1@gmail.com', 1, 'medical', 'doctor', true, 'Cardiologist', 'specialist', 'one'),
-  ('specialist2@gmail.com', 2, 'medical', 'doctor', true, 'Neurologist', 'specialist', 'two'),
-  ('admin1@gmail.com', 1, 'staff', 'administrator', false, 'Manager', 'admin', 'one'),
-  ('admin2@gmail.com', 2, 'staff', 'administrator', false, 'Manager', 'admin', 'one');
+  ('doctor1@medc.org', 1, 'medical', 'doctor', false, 'Family Doctor', 'doctor', 'one'),
+  ('doctor2@medc.org', 2, 'medical', 'doctor', false, 'Family Doctor', 'doctor', 'two'),
+  ('specialist1@medc.org', 1, 'medical', 'doctor', true, 'Cardiologist', 'specialist', 'one'),
+  ('specialist2@medc.org', 2, 'medical', 'doctor', true, 'Neurologist', 'specialist', 'two'),
+  ('admin1@medc.org', 1, 'staff', 'administrator', false, 'Manager', 'admin', 'one'),
+  ('admin2@medc.org', 2, 'staff', 'administrator', false, 'Manager', 'admin', 'one'),
+  ('receptionist1@medc.org', 1, 'staff', 'receptionist', false, 'Receptionist', 'Front', 'Office1'),
+  ('receptionist2@medc.org', 2, 'staff', 'receptionist', false, 'Receptionist', 'Front', 'Office2');
+
 
 INSERT INTO 
   Patient(email_address, first_name, last_name, date_of_birth, primary_doctor_id) 
@@ -41,12 +46,14 @@ Values
 INSERT INTO
   Employee_Login(email_address, password, employee_id)
 VALUES
-  ('doctor1@gmail.com', 'password', 1),
-  ('doctor2@gmail.com', 'password', 2),
-  ('specialist1@gmail.com', 'password', 3),
-  ('specialist2@gmail.com', 'password', 4),
-  ('admin1@gmail.com', 'password', 5),
-  ('admin2@gmail.com', 'password', 6);
+  ('doctor1@medc.org', 'password', 1),
+  ('doctor2@medc.org', 'password', 2),
+  ('specialist1@medc.org', 'password', 3),
+  ('specialist2@medc.org', 'password', 4),
+  ('admin1@medc.org', 'password', 5),
+  ('admin2@medc.org', 'password', 6),
+  ('receptionist1@medc.org', 'password', 7),
+  ('receptionist2@medc.org', 'password', 8);
 
 INSERT INTO
   Patient_Login(email_address, password, patient_id)
