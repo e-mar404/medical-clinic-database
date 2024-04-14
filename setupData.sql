@@ -1,5 +1,3 @@
-USE mdb;
-
 INSERT INTO 
   Clinic(clinic_name) 
 VALUES 

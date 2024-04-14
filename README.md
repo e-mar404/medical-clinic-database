@@ -1,5 +1,11 @@
-- [ ] is not implemented in `main.sql`
-- [x] has been implemented in `main.sql`
+# Update hosted db
+- Either git clone this repo or download the sql files
+- cd into the dir where the sql files are 
+- run `mysql < setup.sql < setupTriggers.sql < setupProcedures.sql < setupEvents.sql < setupData.sql -h <host> -P <port> -u root -p` 
+- input password when promted   
+
+### note: 
+- the port, host and password are pinned on the discord in '#checkpoint-3'
 
 # Entities
 
