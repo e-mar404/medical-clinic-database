@@ -8,7 +8,7 @@ BEGIN
   SET appointment_status='no show'
   WHERE 
     appointment_status='scheduled' AND
-    appointment_date <= CURDATE() OR 
+    appointment_date <= CURDATE() AND 
     CURTIME() > SUBTIME(appointment_time, '-00:01');
   
   SET SQL_SAFE_UPDATES = 1;
