@@ -93,6 +93,20 @@ BEGIN
 END; //
 
 DELIMITER //
+CREATE TRIGGER Medication_NoDuplicatePrescriptions
+BEFORE INSERT ON Medication
+FOR EACH ROW
+BEGIN
+  IF EXISTS (
+      SELECT patient_id, medication_name
+      FROM Medication
+      WHERE patient_id=NEW.patient_id AND medication_name=NEW.medication_name
+    ) THEN
+      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Patient already has already been prescribed that medication';
+  END IF;
+END; //
+
+DELIMITER //
 CREATE TRIGGER ContactInformation_ITrigger
 BEFORE INSERT ON ContactInformation
 FOR EACH ROW
