@@ -211,6 +211,7 @@ CREATE TABLE Medication (
   medication_name VARCHAR(50),
   date_prescribed DATE NOT NULL,
   num_refills INT DEFAULT 1,
+  active BOOL DEFAULT TRUE,
   created DATE,
   createdby VARCHAR(50),
   updated DATE,

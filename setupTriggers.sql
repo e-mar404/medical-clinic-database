@@ -100,7 +100,7 @@ BEGIN
   IF EXISTS (
       SELECT patient_id, medication_name
       FROM Medication
-      WHERE patient_id=NEW.patient_id AND medication_name=NEW.medication_name
+      WHERE patient_id=NEW.patient_id AND medication_name=NEW.medication_name AND active
     ) THEN
       SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Patient already has already been prescribed that medication';
   END IF;
