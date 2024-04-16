@@ -2,6 +2,7 @@ USE mdb;
 
 DROP TRIGGER IF EXISTS Appointment_CheckForReferral;
 DROP TRIGGER IF EXISTS Appointment_ChargePatientForNoShow;
+Drop TRIGGER IF EXISTS Appointment_ChargePatientForConfirm;
 DROP TRIGGER IF EXISTS Employee_CheckRolesTrigger;
 DROP TRIGGER IF EXISTS ContactInformation_ITrigger;
 DROP TRIGGER IF EXISTS ContactInformation_UTrigger;
@@ -72,6 +73,27 @@ BEGIN
       INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 15.00, NEW.appointment_date);
   END IF;
 END; //
+
+DELIMITER //
+
+CREATE TRIGGER Appointment_ChargePatientForConfirm
+AFTER UPDATE ON Appointment
+FOR EACH ROW
+BEGIN
+  IF NEW.appointment_status = 'confirm' THEN
+    IF NOT EXISTS (
+        SELECT C.patient_id
+        FROM Charges AS C
+        WHERE
+          C.date_charged = NEW.appointment_date AND
+          C.patient_id = NEW.patient_id
+      ) THEN
+        INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 100.00, NEW.appointment_date);
+    END IF;
+  END IF;
+END; //
+
+DELIMITER ;
 
 
 DELIMITER //
