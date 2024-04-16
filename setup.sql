@@ -233,8 +233,10 @@ CREATE TABLE Charges (
   amount DECIMAL,
   date_charged DATE,
   paid TINYINT DEFAULT FALSE,
+  invoice_num INT AUTO_INCREMENT PRIMARY KEY,
   CONSTRAINT FK_Charges_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
+
 
 /* Views */
 CREATE VIEW all_appointments(appintment_date, doctor_fname, doctor_lname, patient_fname, patient_lname)
