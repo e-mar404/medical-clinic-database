@@ -164,7 +164,7 @@ CREATE TABLE Patient_FinancialInformation (
     name_on_card VARCHAR(50) NOT NULL,
     card_number VARCHAR(50) NOT NULL,
     cvv VARCHAR(50) NOT NULL,
-    expiration_date DATE NOT NULL,
+    expiration_date VARCHAR(5),
     created DATE,
     createdby VARCHAR(50),
     updated DATE,
