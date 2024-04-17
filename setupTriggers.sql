@@ -93,10 +93,8 @@ BEGIN
   END IF;
 END; //
 
-DELIMITER ;
-
-
 DELIMITER //
+	
 CREATE TRIGGER Employee_CheckRolesTrigger
 BEFORE INSERT ON Employee
 FOR EACH ROW
