@@ -1,37 +1,5 @@
 USE mdb;
 
-DROP TRIGGER IF EXISTS Appointment_CheckForReferral;
-DROP TRIGGER IF EXISTS Appointment_ChargePatientForNoShow;
-Drop TRIGGER IF EXISTS Appointment_ChargePatientForConfirm;
-DROP TRIGGER IF EXISTS Employee_CheckRolesTrigger;
-DROP TRIGGER IF EXISTS ContactInformation_ITrigger;
-DROP TRIGGER IF EXISTS ContactInformation_UTrigger;
-DROP TRIGGER IF EXISTS Company_ITrigger;
-DROP TRIGGER IF EXISTS Company_UTrigger;
-DROP TRIGGER IF EXISTS Clinic_ITrigger;
-DROP TRIGGER IF EXISTS Clinic_UTrigger;
-DROP TRIGGER IF EXISTS Clinic_ITrigger;
-DROP TRIGGER IF EXISTS ManagedBy_ITrigger;
-DROP TRIGGER IF EXISTS ManagedBy_UTrigger;
-DROP TRIGGER IF EXISTS Employee_ITrigger;
-DROP TRIGGER IF EXISTS Employee_UTrigger;
-DROP TRIGGER IF EXISTS Patient_ITrigger;
-DROP TRIGGER IF EXISTS Patient_UTrigger;
-DROP TRIGGER IF EXISTS Patient_MedicalHistory_ITrigger;
-DROP TRIGGER IF EXISTS Patient_MedicalHistory_UTrigger;
-DROP TRIGGER IF EXISTS Patient_MedicalProcedure_ITrigger;
-DROP TRIGGER IF EXISTS Patient_MedicalProcedure_UTrigger;
-DROP TRIGGER IF EXISTS Patient_InsuranceInformation_ITrigger;
-DROP TRIGGER IF EXISTS Patient_InsuranceInformation_UTrigger;
-DROP TRIGGER IF EXISTS Patient_FinancialInformation_ITrigger;
-DROP TRIGGER IF EXISTS Patient_FinancialInformation_UTrigger;
-DROP TRIGGER IF EXISTS Patient_EmergencyContacts_ITrigger;
-DROP TRIGGER IF EXISTS Patient_EmergencyContacts_UTrigger;
-DROP TRIGGER IF EXISTS Appointment_ITrigger;
-DROP TRIGGER IF EXISTS Appointment_UTrigger;
-DROP TRIGGER IF EXISTS Medication_ITrigger;
-DROP TRIGGER IF EXISTS Medication_UTrigger;
-
 DELIMITER //
 CREATE TRIGGER Appointment_CheckForReferral 
 BEFORE INSERT ON Appointment 
@@ -62,15 +30,17 @@ CREATE TRIGGER Appointment_ChargePatientForNoShow
 AFTER UPDATE ON Appointment
 FOR EACH ROW
 BEGIN
-  IF NOT EXISTS (
+  IF NEW.appointment_status = 'no show' THEN
+    IF NOT EXISTS (
       SELECT C.patient_id
       FROM Charges AS C
       WHERE
-        NEW.appointment_status='no show' AND
-        C.date_charged=NEW.appointment_date AND
-        C.patient_id=NEW.patient_id
-    ) THEN
+      NEW.appointment_status='no show' AND
+      C.date_charged=NEW.appointment_date AND
+      C.patient_id=NEW.patient_id
+      ) THEN
       INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 15.00, NEW.appointment_date);
+    END IF;
   END IF;
 END; //
 
