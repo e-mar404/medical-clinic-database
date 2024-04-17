@@ -169,7 +169,7 @@ CREATE TABLE Patient_FinancialInformation (
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+    CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
 
 CREATE TABLE Patient_EmergencyContacts (
@@ -181,7 +181,7 @@ CREATE TABLE Patient_EmergencyContacts (
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_EmergencyContacts_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+    CONSTRAINT FK_Patient_EmergencyContacts_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
 
 /* Supporting Tables */
