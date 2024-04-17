@@ -232,8 +232,16 @@ CREATE TABLE Charges (
   date_charged DATE,
   paid TINYINT DEFAULT FALSE,
   invoice_num INT AUTO_INCREMENT PRIMARY KEY,
+  charge_type VARCHAR(10) GENERATED ALWAYS AS (
+    CASE
+      WHEN amount = 15 THEN 'no show'
+      WHEN amount = 100 THEN 'confirm'
+      ELSE NULL
+    END
+  ) STORED,
   CONSTRAINT FK_Charges_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
+
 
 
 /* Views */
