@@ -72,3 +72,12 @@ INSERT INTO
 VALUES
   (1, 3, Date '2024-05-01'),
   (2, 3, Date '2024-05-01');
+
+
+INSERT INTO 
+	Appointment(appointment_date, appointment_time, appointment_status, clinic_id, patient_id, doctor_id, confirmation)
+VALUES 
+	(DATE '2024-04-18', '14:00', 1, 1, 1, 1, 1),
+  (DATE '2024-04-19', '15:00',1, 1, 2, 1, 1),
+  (DATE '2024-04-17', '09:00', 1, 2, 3, 2, 1),
+  (DATE '2024-04-17', '15:00',1, 1, 4, 1, 1);
