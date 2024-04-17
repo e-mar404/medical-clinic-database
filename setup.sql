@@ -5,22 +5,6 @@ USE mdb;
 SET GLOBAL time_zone = '-05:00';
 SET SESSION time_zone ='-05:00';
 
-/* Drop tables and reinitialize */
-DROP TABLE IF EXISTS Medication;
-DROP TABLE IF EXISTS Appointment;
-DROP TABLE IF EXISTS Employee;
-DROP TABLE IF EXISTS Patient_MedicalHistory;
-DROP TABLE IF EXISTS Patient_MedicalProcedure;
-DROP TABLE IF EXISTS Patient_EmergencyContacts;
-DROP TABLE IF EXISTS Patient_FinancialInformation;
-DROP TABLE IF EXISTS Patient_InsuranceInformation;
-DROP TABLE IF EXISTS Patient_ContactInformation;
-DROP TABLE IF EXISTS Patient;
-DROP TABLE IF EXISTS ContactInformation;
-DROP TABLE IF EXISTS ManagedBy;
-DROP TABLE IF EXISTS Clinic;
-DROP TABLE IF EXISTS Company;
-
 /* Base Tables */
 CREATE TABLE ContactInformation (
     email_address VARCHAR(50) NOT NULL PRIMARY KEY,
