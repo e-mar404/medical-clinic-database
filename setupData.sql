@@ -67,6 +67,12 @@ VALUES
   ('patient3@gmail.com', 'password', 3),
   ('patient4@gmail.com', 'password', 4);
 
+INSERT INTO 
+	Patient_FinancialInformation (patient_id, name_on_card, card_number, cvv, expiration_date) 
+VALUES
+	(1, 'Gojo Satoru', '123-123-123-1234', '123', '06/24'),
+	(1, 'John Pham', '999-999-999-9999', '567', '08/28');
+
 INSERT INTO
   Referral(patient_id, doctor_id,  expiration_date)
 VALUES
