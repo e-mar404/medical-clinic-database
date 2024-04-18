@@ -39,7 +39,7 @@ BEGIN
       C.date_charged=NEW.appointment_date AND
       C.patient_id=NEW.patient_id
       ) THEN
-      INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 15.00, NEW.appointment_date);
+      INSERT INTO Charges(patient_id, clinc_id, amount, date_charged) VALUES(NEW.patient_id, NEW.clinic_id, 15.00, NEW.appointment_date);
     END IF;
   END IF;
 END; //
@@ -58,7 +58,8 @@ BEGIN
           C.date_charged = NEW.appointment_date AND
           C.patient_id = NEW.patient_id
       ) THEN
-        INSERT INTO Charges(patient_id, amount, date_charged) VALUES(NEW.patient_id, 100.00, NEW.appointment_date);
+        INSERT INTO Charges(patient_id, clinic_id, amount, date_charged)
+        VALUES(NEW.patient_id, NEW.clinic_id, 100.00, NEW.appointment_date);
     END IF;
   END IF;
 END; //
