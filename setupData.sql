@@ -86,7 +86,6 @@ VALUES
 INSERT INTO 
 	Appointment(appointment_date, appointment_time, appointment_status, clinic_id, patient_id, doctor_id, confirmation)
 VALUES 
-	(DATE '2024-04-18', '14:00', 'scheduled', 1, 1, 1, 1),
   (DATE '2024-04-19', '15:00', 'scheduled', 1, 2, 1, 1),
   (DATE '2024-04-17', '09:00', 'no show', 2, 3, 2, 1),
   (DATE '2024-04-17', '15:00', 'complete', 1, 4, 1, 1);

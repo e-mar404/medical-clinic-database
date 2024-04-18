@@ -216,7 +216,7 @@ CREATE TABLE Referral (
 
 CREATE TABLE Charges (
   patient_id INT NOT NULL,
-  clinic_id INT, -- New column
+  clinic_id INT,
   amount DECIMAL,
   date_charged DATE,
   paid TINYINT DEFAULT FALSE,
