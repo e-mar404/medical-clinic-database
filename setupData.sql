@@ -73,6 +73,11 @@ VALUES
 	(1, 'Gojo Satoru', '123-123-123-1234', '123', '06/24'),
 	(1, 'John Pham', '999-999-999-9999', '567', '08/28');
 
+INSERT INTO 
+  Patient_InsuranceInformation (patient_id, policy_number, group_number)
+VALUES 
+  (1, 123456789, 000123456789);
+
 INSERT INTO
   Referral(patient_id, doctor_id, reason_for_referral, expiration_date)
 VALUES
