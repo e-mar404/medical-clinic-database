@@ -168,11 +168,10 @@ CREATE TABLE Patient_EmergencyContacts (
     CONSTRAINT FK_Patient_EmergencyContacts_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
 );
 
-/* Supporting Tables */
 CREATE TABLE Appointment (
   appointment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   appointment_date DATE NOT NULL,
-  appointment_status ENUM('scheduled', 'confirm', 'past', 'cancelled', 'no show') NOT NULL,
+  appointment_status ENUM('scheduled', 'confirm', 'past', 'cancelled', 'no show', 'complete') NOT NULL,
   clinic_id INT NOT NULL, 
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,
@@ -186,6 +185,8 @@ CREATE TABLE Appointment (
   CONSTRAINT FK_Appointment_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
   CONSTRAINT FK_Appointment_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
 );
+
+
 
 CREATE TABLE Medication (
   patient_id INT NOT NULL,
