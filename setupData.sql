@@ -38,12 +38,12 @@ VALUES
 
 
 INSERT INTO 
-  Patient(email_address, first_name, last_name, date_of_birth, primary_doctor_id) 
+  Patient(email_address, first_name, last_name, date_of_birth, primary_doctor_id, gender) 
 Values 
-  ('patient1@gmail.com', 'patient', 'one', DATE '2003-07-13', 1),
-  ('patient2@gmail.com', 'patient', 'two', DATE '2003-07-13', 1),
-  ('patient3@gmail.com', 'patient', 'three', DATE '2003-07-13', 2),
-  ('patient4@gmail.com', 'patient', 'four', DATE '2003-07-13', 2);
+  ('patient1@gmail.com', 'patient', 'one', DATE '2003-07-13', 1, 'M'),
+  ('patient2@gmail.com', 'patient', 'two', DATE '2003-07-13', 1, 'F'),
+  ('patient3@gmail.com', 'patient', 'three', DATE '2003-07-13', 2, 'M'),
+  ('patient4@gmail.com', 'patient', 'four', DATE '2003-07-13', 2, 'F');
 
 INSERT INTO
   Employee_Login(email_address, password, employee_id)
