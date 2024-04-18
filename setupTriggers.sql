@@ -50,7 +50,7 @@ CREATE TRIGGER Appointment_ChargePatientForConfirm
 AFTER UPDATE ON Appointment
 FOR EACH ROW
 BEGIN
-  IF NEW.appointment_status = 'confirm' THEN
+  IF NEW.appointment_status = 'complete' THEN
     IF NOT EXISTS (
         SELECT C.patient_id
         FROM Charges AS C
