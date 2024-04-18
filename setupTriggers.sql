@@ -46,7 +46,7 @@ END; //
 
 DELIMITER //
 
-CREATE TRIGGER Appointment_ChargePatientForConfirm
+CREATE TRIGGER Appointment_ChargePatientForComplete
 AFTER UPDATE ON Appointment
 FOR EACH ROW
 BEGIN
