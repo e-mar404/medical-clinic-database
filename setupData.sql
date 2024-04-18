@@ -86,3 +86,7 @@ VALUES
   (DATE '2024-04-19', '15:00',1, 1, 2, 1, 1),
   (DATE '2024-04-17', '09:00', 1, 2, 3, 2, 1),
   (DATE '2024-04-17', '15:00',1, 1, 4, 1, 1);
+
+INSERT INTO Charges (patient_id, clinic_id, amount, date_charged, paid) VALUES
+			(1, 1, 15.00, '2024-04-18', 0),
+			(1, 1, 100.00, '2024-04-10', 1);
