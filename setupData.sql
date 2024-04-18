@@ -74,11 +74,10 @@ VALUES
 	(1, 'John Pham', '999-999-999-9999', '567', '08/28');
 
 INSERT INTO
-  Referral(patient_id, doctor_id,  expiration_date)
+  Referral(patient_id, doctor_id, reason_for_referral, expiration_date)
 VALUES
-  (1, 3, Date '2024-05-01'),
-  (2, 3, Date '2024-05-01');
-
+  (1, 3, 'broken heart idk', Date '2024-05-01'),
+  (2, 3, 'High blood pressure + pregnant', Date '2024-05-01');
 
 INSERT INTO 
 	Appointment(appointment_date, appointment_time, appointment_status, clinic_id, patient_id, doctor_id, confirmation)

@@ -205,6 +205,7 @@ CREATE TABLE Medication (
 CREATE TABLE Referral (
   patient_id INT NOT NULL,
   doctor_id INT NOT NULL,
+  reason_for_referral VARCHAR(255),
   expiration_date DATE,
   CONSTRAINT FK_Referral_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
   CONSTRAINT FK_Referral_doctor_id FOREIGN KEY (doctor_id) REFERENCES Employee (employee_id)
