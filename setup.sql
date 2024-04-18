@@ -229,10 +229,8 @@ CREATE TABLE Charges (
     END
   ) STORED,
   CONSTRAINT FK_Charges_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
-  CONSTRAINT FK_Charges_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id) -- New foreign key constraint
+  CONSTRAINT FK_Charges_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id) 
 );
-
-
 
 
 /* Views */
