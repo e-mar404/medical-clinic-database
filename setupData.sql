@@ -40,9 +40,9 @@ INSERT INTO
   Patient(email_address, first_name, last_name, date_of_birth, primary_doctor_id, gender) 
 Values 
   ('emarin@gmail.com', 'Emilio', 'Marin', DATE '2003-07-13', 1, 'M'),
-  ('btuason@gmail.com', 'Ben', 'Tuason', DATE '2003-07-13', 1, 'F'),
-  ('yrodriguez@gmail.com', 'Yesenia', 'Rodriguez', DATE '2003-07-13', 2, 'M'),
-  ('mzaker@gmail.com', 'Mohammed', 'Zaker', DATE '2003-07-13', 2, 'F');
+  ('btuason@gmail.com', 'Ben', 'Tuason', DATE '2003-07-13', 1, 'M'),
+  ('yrodriguez@gmail.com', 'Yesenia', 'Rodriguez', DATE '2003-07-13', 2, 'F'),
+  ('mzaker@gmail.com', 'Mohammad', 'Zaker', DATE '2003-07-13', 2, 'M');
 
 INSERT INTO
   Employee_Login(email_address, password, employee_id)
