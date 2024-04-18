@@ -212,6 +212,7 @@ CREATE TABLE Referral (
 
 CREATE TABLE Charges (
   patient_id INT NOT NULL,
+  clinic_id INT, -- New column
   amount DECIMAL,
   date_charged DATE,
   paid TINYINT DEFAULT FALSE,
@@ -223,8 +224,10 @@ CREATE TABLE Charges (
       ELSE NULL
     END
   ) STORED,
-  CONSTRAINT FK_Charges_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+  CONSTRAINT FK_Charges_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+  CONSTRAINT FK_Charges_clinic_id FOREIGN KEY (clinic_id) REFERENCES Clinic (clinic_id) -- New foreign key constraint
 );
+
 
 
 
