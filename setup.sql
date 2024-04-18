@@ -153,7 +153,8 @@ CREATE TABLE Patient_FinancialInformation (
     createdby VARCHAR(50),
     updated DATE,
     updatedby VARCHAR(50),
-    CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id)
+    CONSTRAINT FK_Patient_FinancialInformation_patient_id FOREIGN KEY (patient_id) REFERENCES Patient (patient_id),
+    CONSTRAINT UC_Patient_FinancialInformation_card_number UNIQUE (card_number)
 );
 
 CREATE TABLE Patient_EmergencyContacts (
