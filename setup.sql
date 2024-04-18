@@ -222,7 +222,7 @@ CREATE TABLE Charges (
   charge_type VARCHAR(10) GENERATED ALWAYS AS (
     CASE
       WHEN amount = 15 THEN 'no show'
-      WHEN amount = 100 THEN 'confirm'
+      WHEN amount = 100 THEN 'complete'
       ELSE NULL
     END
   ) STORED,
