@@ -15,12 +15,12 @@ VALUES
   ('swong@medc.org', '1234567890', '1 street dr'),
   ('uramamurthy@medc.org', '1234567890', '1 street dr'),
   ('nshepley@medc.org', '1234567890', '1 street dr'),
-  ('drogridues@medc.org', '1234567890', '1 street dr'),
+  ('drodrigues@gmail.com', '1234567890', '1 street dr'),
   ('jbailey@medc.org', '1234567890', '1 street dr'),
   ('emarin@gmail.com', '1234567890', '1 street dr'),
   ('btuason@gmail.com', '1234567890', '1 street dr'),
   ('yrodriguez@gmail.com', '1234567890', '1 street dr'),
-  ('mzaker@gmail.com', '1234567890', '1 street dr');    
+  ('mzaker@medc.org', '1234567890', '1 street dr');    
 
 INSERT INTO
   Employee(email_address, primary_clinic, employee_type, employee_role, specialist, title, first_name, last_name) 
@@ -31,7 +31,7 @@ VALUES
   ('swong@medc.org', 2, 'medical', 'doctor', true, 'Dermatologist', 'Sissy', 'Wong'),
   ('uramamurthy@medc.org', 1, 'staff', 'administrator', false, 'Manager', 'Uma', 'Ramamurthy'),
   ('nshepley@medc.org', 2, 'staff', 'administrator', false, 'Manager', 'Nathan', 'Shepley'),
-  ('drogridues@medc.org', 1, 'staff', 'receptionist', false, 'Receptionist', 'Debra', 'Rodrigues'),
+  ('mzaker@medc.org', 1, 'staff', 'receptionist', false, 'Receptionist', 'Mohammad', 'Zaker'),
   ('jbailey@medc.org', 2, 'staff', 'receptionist', false, 'Receptionist', 'Jeremy', 'Bailey'),
   ('mclavin@medc.org', 1, 'medical', 'nurse', false, 'NP', 'Matt', 'Clavin'),
   ('dpoiltzer@medc.org', 2, 'medical', 'nurse', false, 'NP', 'David', 'Poiltzer');
@@ -42,7 +42,7 @@ Values
   ('emarin@gmail.com', 'Emilio', 'Marin', DATE '2003-07-13', 1, 'M'),
   ('btuason@gmail.com', 'Ben', 'Tuason', DATE '2003-07-13', 1, 'M'),
   ('yrodriguez@gmail.com', 'Yesenia', 'Rodriguez', DATE '2003-07-13', 2, 'F'),
-  ('mzaker@gmail.com', 'Mohammad', 'Zaker', DATE '2003-07-13', 2, 'M');
+  ('drodrigues@gmail.com', 'Debra', 'Rodrigues', DATE '2003-07-13', 2, 'F');
 
 INSERT INTO
   Employee_Login(email_address, password, employee_id)
@@ -53,7 +53,7 @@ VALUES
   ('swong@medc.org', 'password', 4),
   ('uramamurthy@medc.org', 'password', 5),
   ('nshepley@medc.org', 'password', 6),
-  ('drogridues@medc.org', 'password', 7),
+  ('mzaker@medc.org', 'password', 7),
   ('jbailey@medc.org', 'password', 8),
   ('mclavin@medc.org', 'password', 9),
   ('dpoiltzer@medc.org', 'password', 10);
@@ -64,7 +64,7 @@ VALUES
   ('emarin@gmail.com', 'password', 1),
   ('btuason@gmail.com', 'password', 2),
   ('yrodriguez@gmail.com', 'password', 3),
-  ('mzaker@gmail.com', 'password', 4);
+  ('drodrigues@gmail.com', 'password', 4);
 
 INSERT INTO 
 	Patient_FinancialInformation (patient_id, name_on_card, card_number, cvv, expiration_date) 

@@ -9,7 +9,7 @@ BEGIN
   WHERE 
     appointment_status='scheduled' AND (
     appointment_date <= CURDATE() AND 
-    CURTIME() > SUBTIME(appointment_time, '-00:01') OR
+    CURTIME() > SUBTIME(appointment_time, '-00:15') OR
     appointment_date < CURDATE());
   
   END IF;
